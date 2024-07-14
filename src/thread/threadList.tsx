@@ -1,4 +1,6 @@
+import { Box, Link } from "@yamada-ui/react";
 import React, { useEffect, useState } from "react";
+import './css/threadlist.css';
 
 const ThreadList = () => {
     const [threads, setThreads] = useState([]);
@@ -23,16 +25,21 @@ const ThreadList = () => {
     }
 
     return (
-        <div>
-            <h1>新着スレッド</h1>
-            <ul>
-                {threads.map((thread) => (
-                    <li key={thread.id}>
-                        <h2>{thread.title}</h2>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <Box w={1000} maxWidth='80%'>
+            <Box m='0 auto' w={500} h={"auto"}>
+                <h1 className="threadlist">新着スレッド</h1>
+                <ul>
+                    {threads.map((thread) => (
+                        <Link key={thread.id} href={`/threads/${thread.id}`}>
+                        <li key={thread.id} className="list">
+                            <h2>{thread.title}</h2>
+                        </li>
+                        </Link>
+                    ))}
+                </ul>
+                <Link href="/threads/new">新規作成へ</Link>
+            </Box>
+        </Box>
     );
 };
 
