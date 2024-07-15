@@ -30,7 +30,7 @@ const ThreadList = () => {
                 <h1 className="threadlist">新着スレッド</h1>
                 <ul>
                     {threads.map((thread) => (
-                        <Link key={thread.id} href={`/threads/${thread.id}`}>
+                        <Link href={`/threads/${thread.id}`}>
                         <li key={thread.id} className="list">
                             <h2>{thread.title}</h2>
                         </li>
