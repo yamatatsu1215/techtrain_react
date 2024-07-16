@@ -25,7 +25,7 @@ const ThreadList = () => {
     }
 
     return (
-        <Box w={1000} maxWidth='80%'>
+        <Box w={1000} maxWidth='80%' mt={100}>
             <Box m='0 auto' w={500} h={"auto"}>
                 <h1 className="threadlist">新着スレッド</h1>
                 <ul>
@@ -37,7 +37,6 @@ const ThreadList = () => {
                         </Link>
                     ))}
                 </ul>
-                <Link href="/threads/new">新規作成へ</Link>
             </Box>
         </Box>
     );

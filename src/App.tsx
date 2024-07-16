@@ -2,11 +2,13 @@ import ThreadList from "./thread/threadList";
 import { BrowserRouter as Router, Route, Routes,Navigate} from 'react-router-dom';
 import CreateThread from "./create-thread/createThread";
 import ThreadDetail from "./thread/[id]/threadDetail";
+import Header from "./header/Header";
 
 function App() {
 
   return (
     <>
+    <Header></Header>
     <Router>
       <Routes>
         <Route path="/threads/new" element={<CreateThread></CreateThread>}></Route>

@@ -1,9 +1,15 @@
-import { Box } from "@yamada-ui/react";
+import { Box, Link, Text } from "@yamada-ui/react";
+import './css/header.css';
 
 const Header = () => {
     return (
         <Box className="header">
-            <h1>掲示板</h1>
+            <Text className="board">
+                <Link href="/threads">
+                    掲示板
+                </Link>
+            </Text>
+            <Link href="/threads/new" className="link">新規作成へ</Link>
         </Box>
     );
 }

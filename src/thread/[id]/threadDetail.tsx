@@ -8,6 +8,7 @@ const ThreadDetail = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [newPost, setNewPost] = useState("");
 
   useEffect(() => {
 
@@ -38,6 +39,27 @@ const ThreadDetail = () => {
     fetchThread();
   }, [threadId]);
 
+  const handlePostSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ post: newPost }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed new error');
+      }
+      const data = await response.json();
+      setPosts(prevPosts => [...prevPosts, data]); 
+      setNewPost("");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -51,6 +73,13 @@ const ThreadDetail = () => {
           <li key={post.id} className='post'>{post.post}</li>
         ))}
       </ul>
+      <form onSubmit={handlePostSubmit} className='form'>
+        <textarea
+          value={newPost}
+          onChange={(e) => setNewPost(e.target.value)}
+        ></textarea>
+        <button type='submit'>投稿</button>
+      </form>
     </div>
   );
 };
