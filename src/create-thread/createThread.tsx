@@ -30,7 +30,7 @@ const CreateThread = () => {
   };
 
   return (
-    <Box>
+    <Box w={1500} maxWidth="80%" margin="0 auto">
       <h1>スレッド作成</h1>
       <form onSubmit={handleThread}>
         <Input
